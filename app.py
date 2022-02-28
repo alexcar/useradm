@@ -27,6 +27,10 @@ def index():
     conn.close()
     return render_template('index.html', usuarios=usuarios)
 
+@app.route('/about/')    
+def about():
+    return render_template('about.html')
+
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
