@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Editar {{ usuario['user_name'] }} {% endblock %}</h1>
+    <form method="post">
+        <label for="user_name">Nome</label>
+        <br>
+        <input type="text" name="user_name"
+               value="{{ request.form['user_name'] or usuario['user_name'] }}"></input>
+        <br>
+
+        <label for="user_username">Nome do usuário</label>
+        <br>
+        <input type="text" name="user_username"
+               value="{{ request.form['user_username'] or usuario['user_username'] }}"></input>
+        <br>
+
+        <label for="user_password">Senha</label>
+        <br>
+        <input type="text" name="user_password"
+               value="{{ request.form['user_password'] or usuario['user_password'] }}"></input>
+        <br>        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
+    <form action="{{ url_for('delete', id=usuario['id']) }}" method="POST">
+        <input type="submit" value="Excluir Usuário"
+                onclick="return confirm('Deseja excluir esse usuário?')">
+    </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Usuários {% endblock %}</h1>
+    {% for usuario in usuarios %}
+        <div class='post'>
+            <p>{{ usuario['user_name'] }}</p>
+            <h2>{{ usuario['user_username'] }}</h2>
+            <h2>{{ usuario['user_password'] }}</h2>
+            <a href="{{ url_for('edit', id=usuario['id']) }}">Edit</a>
+        </div>
+    {% endfor %}
+{% endblock %}
